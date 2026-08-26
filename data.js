@@ -128,7 +128,7 @@ const APP_DATA = {
   },
 
   // ==========================================
-  // SÉANCES DE SPORT GLOBALLES (Identiques)
+  // SÉANCES DE SPORT GLOBALES (Avec liens Docteur-Fitness)
   // ==========================================
   sessions: [
     {
@@ -140,22 +140,22 @@ const APP_DATA = {
         {
           label: "Quadriceps & Chaîne Antérieure",
           items: [
-            { name: "Squat Barre (ou Goblet Squat)", sets: "4 séries · 6-8 reps", tags: ["Quadriceps"], note: "Descente contrôlée, buste fier." },
-            { name: "Leg Press Inclinée", sets: "3 séries · 8-10 reps", tags: ["Quadriceps"], note: "Pieds bas sur la plateforme pour cibler les quads." },
-            { name: "Leg Extension", sets: "3 séries · 12-15 reps", tags: ["Quadriceps"], note: "Pause de 1 seconde en contraction haute." }
+            { name: "Squat Barre (ou Goblet Squat)", sets: "4 séries · 6-8 reps", tags: ["Quadriceps"], note: "Descente contrôlée, buste fier.", docteurFitnessUrl: "https://www.docteur-fitness.com/squat" },
+            { name: "Leg Press Inclinée", sets: "3 séries · 8-10 reps", tags: ["Quadriceps"], note: "Pieds bas sur la plateforme pour cibler les quads.", docteurFitnessUrl: "https://www.docteur-fitness.com/presse-a-cuisses" },
+            { name: "Leg Extension", sets: "3 séries · 12-15 reps", tags: ["Quadriceps"], note: "Pause de 1 seconde en contraction haute.", docteurFitnessUrl: "https://www.docteur-fitness.com/leg-extension" }
           ]
         },
         {
           label: "Ischios & Fessiers",
           items: [
-            { name: "Souverain / Soulevé de Terre Roumain", sets: "4 séries · 8-10 reps", tags: ["Ischios"], note: "Garder les jambes semi-tendues, dos bien droit." },
-            { name: "Leg Curl Assis (ou Couché)", sets: "3 séries / 10-12 reps", tags: ["Ischios"], note: "Ne pas décoller les fessiers du siège." }
+            { name: "Souverain / Soulevé de Terre Roumain", sets: "4 séries · 8-10 reps", tags: ["Ischios"], note: "Garder les jambes semi-tendues, dos bien droit.", docteurFitnessUrl: "https://www.docteur-fitness.com/souleve-de-terre-roumain" },
+            { name: "Leg Curl Assis (ou Couché)", sets: "3 séries / 10-12 reps", tags: ["Ischios"], note: "Ne pas décoller les fessiers du siège.", docteurFitnessUrl: "https://www.docteur-fitness.com/leg-curl" }
           ]
         },
         {
           label: "Mollets",
           items: [
-            { name: "Extension Mollets Debout", sets: "4 séries · 12-15 reps", tags: ["Mollets"], note: "Étirement maximal en bas, contraction forte en haut." }
+            { name: "Extension Mollets Debout", sets: "4 séries · 12-15 reps", tags: ["Mollets"], note: "Étirement maximal en bas, contraction forte en haut.", docteurFitnessUrl: "https://www.docteur-fitness.com/mollets-debout" }
           ]
         }
       ]
@@ -169,18 +169,18 @@ const APP_DATA = {
         {
           label: "Largeur & Épaisseur du Dos",
           items: [
-            { name: "Tractions (ou Tirage Vertical)", sets: "4 séries · 6-8 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre." },
-            { name: "Rowing Buste Penché (Barre ou Halteres)", sets: "4 séries · 8-10 reps", tags: ["Dos"], note: "Tirer vers les hanches." },
-            { name: "Tirage Horizontal poulie basse", sets: "3 séries · 10-12 reps", tags: ["Dos"], note: "Garder le dos fixe, serrer les omoplates en fin de mouvement." },
-            { name: "Pulldown Bras Tendus", sets: "3 séries · 12-15 reps", tags: ["Dos"], note: "Idéal pour l'isolation des grands dorsaux." }
+            { name: "Tractions (ou Tirage Vertical)", sets: "4 séries · 6-8 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre.", docteurFitnessUrl: "https://www.docteur-fitness.com/tractions" },
+            { name: "Rowing Buste Penché (Barre ou Halteres)", sets: "4 séries · 8-10 reps", tags: ["Dos"], note: "Tirer vers les hanches.", docteurFitnessUrl: "https://www.docteur-fitness.com/rowing-barre" },
+            { name: "Tirage Horizontal poulie basse", sets: "3 séries · 10-12 reps", tags: ["Dos"], note: "Garder le dos fixe, serrer les omoplates en fin de mouvement.", docteurFitnessUrl: "https://www.docteur-fitness.com/tirage-horizontal" },
+            { name: "Pulldown Bras Tendus", sets: "3 séries · 12-15 reps", tags: ["Dos"], note: "Idéal pour l'isolation des grands dorsaux.", docteurFitnessUrl: "https://www.docteur-fitness.com/pulldown-bras-tendus" }
           ]
         },
         {
           label: "Isolation Biceps",
           items: [
-            { name: "Curl Incliné aux Haltères", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal." },
-            { name: "Curl Pupitre (Larry Scott)", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps." },
-            { name: "Curl Inversé (Prise Pronation)", sets: "3 séries · 12-15 reps", tags: ["Biceps"], note: "Cible le brachial et les avants-bras (complémentaire pour la préhension)." }
+            { name: "Curl Incliné aux Haltères", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-incline-halteres" },
+            { name: "Curl Pupitre (Larry Scott)", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-pupitre" },
+            { name: "Curl Inversé (Prise Pronation)", sets: "3 séries · 12-15 reps", tags: ["Biceps"], note: "Cible le brachial et les avants-bras (complémentaire pour la préhension).", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-inverse-barre" }
           ]
         }
       ]
@@ -195,27 +195,27 @@ const APP_DATA = {
         {
           label: "Développement Pectoral",
           items: [
-            { name: "Développé Couché Incliné (Haltères ou Barre)", sets: "4 séries · 6-8 reps", tags: ["Pectoraux"], note: "Cible le faisceau claviculaire (haut des pecs)." },
-            { name: "Développé Couché Décliné (ou Dips)", sets: "3 séries · 8-10 reps", tags: ["Pectoraux"], note: "Excellente contraction sur le bas des pecs." },
-            { name: "Écartés Poulie Vis-à-Vis", sets: "3 séries · 12-15 reps", tags: ["Pectoraux"], note: "Garder une légère flexion des coudes constante." }
+            { name: "Développé Couché Incliné (Haltères ou Barre)", sets: "4 séries · 6-8 reps", tags: ["Pectoraux"], note: "Cible le faisceau claviculaire (haut des pecs).", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-incline-a-la-barre" },
+            { name: "Développé Couché Décliné (ou Dips)", sets: "3 séries · 8-10 reps", tags: ["Pectoraux"], note: "Excellente contraction sur le bas des pecs.", docteurFitnessUrl: "https://www.docteur-fitness.com/dips" },
+            { name: "Écartés Poulie Vis-à-Vis", sets: "3 séries · 12-15 reps", tags: ["Pectoraux"], note: "Garder une légère flexion des coudes constante.", docteurFitnessUrl: "https://www.docteur-fitness.com/ecartes-poulie-vis-a-vis" }
           ]
         },
         {
           label: "Épaules & Triceps (Option 1 : Focus Épaules)",
           variantKey: "epaules",
           items: [
-            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive." },
-            { name: "Élévations Latérales aux Haltères", sets: "4 séries · 12-15 reps", tags: ["Épaules"], note: "Mouvement fluide, emmener les coudes vers le haut." },
-            { name: "Extension Triceps à la Poulie Haute", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Coudes serrés le long du corps." }
+            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-militaire" },
+            { name: "Élévations Latérales aux Haltères", sets: "4 séries · 12-15 reps", tags: ["Épaules"], note: "Mouvement fluide, emmener les coudes vers le haut.", docteurFitnessUrl: "https://www.docteur-fitness.com/elevations-laterales-halteres" },
+            { name: "Extension Triceps à la Poulie Haute", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Coudes serrés le long du corps.", docteurFitnessUrl: "https://www.docteur-fitness.com/extensions-triceps-poulie" }
           ]
         },
         {
           label: "Épaules & Triceps (Option 2 : Focus Triceps)",
           variantKey: "triceps",
           items: [
-            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive." },
-            { name: "Extension Triceps Nuque (Haltère ou Poulie)", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Étirement complet de la longue portion." },
-            { name: "Dips sur Banc (ou Machine)", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Garder le buste droit pour cibler en priorité les triceps." }
+            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-militaire" },
+            { name: "Extension Triceps Nuque (Haltère ou Poulie)", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Étirement complet de la longue portion.", docteurFitnessUrl: "https://www.docteur-fitness.com/extension-triceps-nuque" },
+            { name: "Dips sur Banc (ou Machine)", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Garder le buste droit pour cibler en priorité les triceps.", docteurFitnessUrl: "https://www.docteur-fitness.com/dips" }
           ]
         }
       ]
@@ -229,15 +229,15 @@ const APP_DATA = {
         {
           label: "Cible Fessiers",
           items: [
-            { name: "Hip Thrust à la Barre", sets: "4 séries · 8-10 reps", tags: ["Fessiers"], note: "Rétroversion du bassin en haut, pause de 1 seconde." },
-            { name: "Fentes Bulgarie (Haltères)", sets: "3 séries · 10 reps / jambe", tags: ["Fessiers"], note: "Inclinaison du buste légèrement vers l'avant pour cibler les fessiers." },
-            { name: "Glute Ham Raise (ou Hyperextensions fessiers)", sets: "3 séries · 12 reps", tags: ["Fessiers"], note: "Arrondir légèrement le haut du dos pour isoler les fessiers." }
+            { name: "Hip Thrust à la Barre", sets: "4 séries · 8-10 reps", tags: ["Fessiers"], note: "Rétroversion du bassin en haut, pause de 1 seconde.", docteurFitnessUrl: "https://www.docteur-fitness.com/hip-thrust" },
+            { name: "Fentes Bulgarie (Haltères)", sets: "3 séries · 10 reps / jambe", tags: ["Fessiers"], note: "Inclinaison du buste légèrement vers l'avant pour cibler les fessiers.", docteurFitnessUrl: "https://www.docteur-fitness.com/fentes-bulgares" },
+            { name: "Glute Ham Raise (ou Hyperextensions fessiers)", sets: "3 séries · 12 reps", tags: ["Fessiers"], note: "Arrondir légèrement le haut du dos pour isoler les fessiers.", docteurFitnessUrl: "https://www.docteur-fitness.com/hyperextensions" }
           ]
         },
         {
           label: "Finition Ischios",
           items: [
-            { name: "Good Morning (Barre légère)", sets: "3 séries · 10-12 reps", tags: ["Ischios"], note: "Mouvement de charnière de hanche, dos plat." }
+            { name: "Good Morning (Barre légère)", sets: "3 séries · 10-12 reps", tags: ["Ischios"], note: "Mouvement de charnière de hanche, dos plat.", docteurFitnessUrl: "https://www.docteur-fitness.com/good-morning" }
           ]
         }
       ]
@@ -251,10 +251,10 @@ const APP_DATA = {
         {
           label: "Renforcement Profond & Grand Droits",
           items: [
-            { name: "Crunch à la Poulie Haute", sets: "3 séries · 12-15 reps", tags: ["Abdominaux"], note: "Enrouler la colonne vertébrale, ne pas tirer avec les bras." },
-            { name: "Relevé de Jambes Suspendu à la Barre", sets: "3 séries · 10-12 reps", tags: ["Abdominaux"], note: "Éviter l'élan, amener les genoux haut vers la poitrine." },
-            { name: "Gainage Planche Frontale", sets: "3 séries · 45s à 1 min", tags: ["Core"], note: "Bassin rétroversé, abdos et fessiers contractés à fond." },
-            { name: "Pallof Press à la Poulie", sets: "3 séries · 12 reps / côté", tags: ["Core"], note: "Anti-rotation stricte pour renforcer les obliques." }
+            { name: "Crunch à la Poulie Haute", sets: "3 séries · 12-15 reps", tags: ["Abdominaux"], note: "Enrouler la colonne vertébrale, ne pas tirer avec les bras.", docteurFitnessUrl: "https://www.docteur-fitness.com/crunch-poulie-haute" },
+            { name: "Relevé de Jambes Suspendu à la Barre", sets: "3 séries · 10-12 reps", tags: ["Abdominaux"], note: "Éviter l'élan, amener les genoux haut vers la poitrine.", docteurFitnessUrl: "https://www.docteur-fitness.com/releves-de-jambes-suspendu" },
+            { name: "Gainage Planche Frontale", sets: "3 séries · 45s à 1 min", tags: ["Core"], note: "Bassin rétroversé, abdos et fessiers contractés à fond.", docteurFitnessUrl: "https://www.docteur-fitness.com/planche-gainage" },
+            { name: "Pallof Press à la Poulie", sets: "3 séries · 12 reps / côté", tags: ["Core"], note: "Anti-rotation stricte pour renforcer les obliques.", docteurFitnessUrl: "https://www.docteur-fitness.com/pallof-press" }
           ]
         }
       ]
