@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Fitness Tracker</title>
+  
+  <!-- Apple & Favicon links -->
+  <link rel="apple-touch-icon" sizes="180x180" href="fitness-app-logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="fitness-app-logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="fitness-app-logo.png">
+  <link rel="shortcut icon" href="fitness-app-logo.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ÉCRAN 1 : LANDING PAGE (SELECTION PROFIL) -->
+  <div id="landing-screen" class="landing-container">
+    <div class="landing-card-wrapper">
+      <h1 class="landing-title">Fitness Tracker</h1>
+      <p class="landing-subtitle">Choisis ton profil pour charger ton programme</p>
+      
+      <div class="profiles-grid">
+        <button class="profile-card" onclick="selectProfile('theo')">
+          <div class="profile-avatar">🏋️‍♂️</div>
+          <div class="profile-info">
+            <h2>Programme Théo</h2>
+            <p>2500 kcal • 160g Protéines</p>
+            <span class="profile-tag">Prise de masse & Renforcement</span>
+          </div>
+        </button>
+
+        <button class="profile-card" onclick="selectProfile('suzanne')">
+          <div class="profile-avatar">🏃‍♀️</div>
+          <div class="profile-info">
+            <h2>Programme Suzanne</h2>
+            <p>1900 kcal • 110g Protéines</p>
+            <span class="profile-tag">Toning, Cardio & Forme</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉCRAN 2 : APPLICATION PRINCIPALE -->
+  <div id="main-app" style="display: none;">
+    <header class="app-header">
+      <div class="user-badge">
+        <span id="user-avatar" class="user-avatar-small"></span>
+        <span id="user-name" class="user-name"></span>
+      </div>
+      <button class="switch-btn" onclick="clearProfile()">Changer de profil</button>
+    </header>
+
+    <main class="app-main">
+      <!-- OBJECTIFS MACROS -->
+      <h3 class="section-title">📊 Objectifs & Suivi du Jour</h3>
+      <div class="macros-grid">
+        <div class="macro-card">
+          <div class="macro-header">
+            <span>Calories</span>
+            <span id="cal-count">0 / 0</span>
+          </div>
+          <div class="macro-val" id="cal-val">0 kcal</div>
+          <div class="progress-bar-bg"><div id="cal-bar" class="progress-bar-fill" style="width: 0%;"></div></div>
+        </div>
+
+        <div class="macro-card">
+          <div class="macro-header">
+            <span>Protéines</span>
+            <span id="prot-count">0 / 0g</span>
+          </div>
+          <div class="macro-val" id="prot-val">0g</div>
+          <div class="progress-bar-bg"><div id="prot-bar" class="progress-bar-fill" style="width: 0%; background-color: #38bdf8;"></div></div>
+        </div>
+
+        <div class="macro-card">
+          <div class="macro-header">
+            <span>Glucides</span>
+            <span id="carb-count">0 / 0g</span>
+          </div>
+          <div class="macro-val" id="carb-val">0g</div>
+          <div class="progress-bar-bg"><div id="carb-bar" class="progress-bar-fill" style="width: 0%; background-color: #fbbf24;"></div></div>
+        </div>
+
+        <div class="macro-card">
+          <div class="macro-header">
+            <span>Lipides</span>
+            <span id="fat-count">0 / 0g</span>
+          </div>
+          <div class="macro-val" id="fat-val">0g</div>
+          <div class="progress-bar-bg"><div id="fat-bar" class="progress-bar-fill" style="width: 0%; background-color: #f43f5e;"></div></div>
+        </div>
+      </div>
+
+      <!-- REPAS -->
+      <h3 class="section-title">🥗 Plan Repas</h3>
+      <div id="meals-list" class="list-container"></div>
+
+      <!-- ENTRAÎNEMENT -->
+      <h3 class="section-title" style="margin-top: 32px;">🏋️‍♂️ Programme d'Entraînement</h3>
+      <div id="workouts-list" class="list-container"></div>
+
+      <button class="reset-day-btn" onclick="resetTodayMeals()">🔄 Réinitialiser les repas du jour</button>
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    let activeKey = null;
+    let activeProgram = null;
+    let checkedMeals = {};
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedProfile = localStorage.getItem("fitness_active_profile");
+      if (savedProfile && PROGRAMS[savedProfile]) {
+        loadProfile(savedProfile);
+      } else {
+        showLanding();
+      }
+    });
+
+    function selectProfile(key) {
+      localStorage.setItem("fitness_active_profile", key);
+      loadProfile(key);
+    }
+
+    function showLanding() {
+      document.getElementById("landing-screen").style.display = "flex";
+      document.getElementById("main-app").style.display = "none";
+    }
+
+    function clearProfile() {
+      localStorage.removeItem("fitness_active_profile");
+      showLanding();
+    }
+
+    function loadProfile(key) {
+      activeKey = key;
+      activeProgram = PROGRAMS[key];
+
+      // Restore checked meals for this profile
+      const savedChecks = localStorage.getItem(`fitness_checks_${activeKey}`);
+      checkedMeals = savedChecks ? JSON.parse(savedChecks) : {};
+
+      // Header update
+      document.getElementById("user-avatar").textContent = activeProgram.badge;
+      document.getElementById("user-name").textContent = activeProgram.name;
+
+      // Render items
+      renderMeals();
+      renderWorkouts();
+      updateMacros();
+
+      // View toggle
+      document.getElementById("landing-screen").style.display = "none";
+      document.getElementById("main-app").style.display = "block";
+    }
+
+    function renderMeals() {
+      const container = document.getElementById("meals-list");
+      container.innerHTML = "";
+
+      activeProgram.meals.forEach(meal => {
+        const isChecked = !!checkedMeals[meal.id];
+        const card = document.createElement("div");
+        card.className = `item-card ${isChecked ? 'completed' : ''}`;
+        card.innerHTML = `
+          <div class="item-left">
+            <div class="checkbox-custom" onclick="toggleMeal('${meal.id}')">
+              ${isChecked ? '✓' : ''}
+            </div>
+            <div class="item-details">
+              <h4>${meal.name}</h4>
+              <div class="macro-pills">
+                <span class="pill">${meal.calories} kcal</span>
+                <span class="pill">P: ${meal.protein}g</span>
+                <span class="pill">G: ${meal.carbs}g</span>
+                <span class="pill">L: ${meal.fat}g</span>
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function toggleMeal(mealId) {
+      checkedMeals[mealId] = !checkedMeals[mealId];
+      localStorage.setItem(`fitness_checks_${activeKey}`, JSON.stringify(checkedMeals));
+      renderMeals();
+      updateMacros();
+    }
+
+    function resetTodayMeals() {
+      checkedMeals = {};
+      localStorage.setItem(`fitness_checks_${activeKey}`, JSON.stringify(checkedMeals));
+      renderMeals();
+      updateMacros();
+    }
+
+    function updateMacros() {
+      let consumed = { calories: 0, protein: 0, carbs: 0, fat: 0 };
+
+      activeProgram.meals.forEach(meal => {
+        if (checkedMeals[meal.id]) {
+          consumed.calories += meal.calories;
+          consumed.protein += meal.protein;
+          consumed.carbs += meal.carbs;
+          consumed.fat += meal.fat;
+        }
+      });
+
+      const targets = activeProgram.targets;
+
+      // Cal
+      document.getElementById("cal-count").textContent = `${consumed.calories} / ${targets.calories} kcal`;
+      document.getElementById("cal-val").textContent = `${consumed.calories} kcal`;
+      document.getElementById("cal-bar").style.width = `${Math.min(100, (consumed.calories / targets.calories) * 100)}%`;
+
+      // Prot
+      document.getElementById("prot-count").textContent = `${consumed.protein} / ${targets.protein}g`;
+      document.getElementById("prot-val").textContent = `${consumed.protein}g`;
+      document.getElementById("prot-bar").style.width = `${Math.min(100, (consumed.protein / targets.protein) * 100)}%`;
+
+      // Carb
+      document.getElementById("carb-count").textContent = `${consumed.carbs} / ${targets.carbs}g`;
+      document.getElementById("carb-val").textContent = `${consumed.carbs}g`;
+      document.getElementById("carb-bar").style.width = `${Math.min(100, (consumed.carbs / targets.carbs) * 100)}%`;
+
+      // Fat
+      document.getElementById("fat-count").textContent = `${consumed.fat} / ${targets.fat}g`;
+      document.getElementById("fat-val").textContent = `${consumed.fat}g`;
+      document.getElementById("fat-bar").style.width = `${Math.min(100, (consumed.fat / targets.fat) * 100)}%`;
+    }
+
+    function renderWorkouts() {
+      const container = document.getElementById("workouts-list");
+      container.innerHTML = "";
+
+      activeProgram.workoutRoutine.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "item-card";
+        card.innerHTML = `
+          <div class="item-details">
+            <h4>${item.title}</h4>
+            <p>${item.detail}</p>
+          </div>
+          <span class="day-badge">${item.day}</span>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
