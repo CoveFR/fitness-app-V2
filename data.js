@@ -166,10 +166,16 @@ const APP_DATA = {
       tags: ["Dos", "Biceps", "Arrière d'épaule"],
       note: "Attention à bien initier le tirage avec les coudes et non avec les mains pour maximiser le recrutement du grand dorsal.",
       groups: [
-        {
+         {
+          label: "Echauffement",
+          items: [
+            { name: "Traction", sets: "4 séries · 6-8 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre.", docteurFitnessUrl: "https://www.docteur-fitness.com/traction" },
+          ]
+        },
+         {
           label: "Largeur & Épaisseur du Dos",
           items: [
-            { name: "Tractions (ou Tirage Vertical)", sets: "4 séries · 6-8 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre.", docteurFitnessUrl: "https://www.docteur-fitness.com/tractions" },
+            { name: "Tirage Vertical", sets: "4 séries · 6-8 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre.", docteurFitnessUrl: "https://www.docteur-fitness.com/tirage-vertical-poitrine" },
             { name: "Rowing Buste Penché (Barre ou Halteres)", sets: "4 séries · 8-10 reps", tags: ["Dos"], note: "Tirer vers les hanches.", docteurFitnessUrl: "https://www.docteur-fitness.com/rowing-barre" },
             { name: "Tirage Horizontal poulie basse", sets: "3 séries · 10-12 reps", tags: ["Dos"], note: "Garder le dos fixe, serrer les omoplates en fin de mouvement.", docteurFitnessUrl: "https://www.docteur-fitness.com/tirage-horizontal" },
             { name: "Pulldown Bras Tendus", sets: "3 séries · 12-15 reps", tags: ["Dos"], note: "Idéal pour l'isolation des grands dorsaux.", docteurFitnessUrl: "https://www.docteur-fitness.com/pulldown-bras-tendus" }
