@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Programme Nutrition &amp; Musculation</title>
+
+<!-- Pour l'écran d'accueil iOS (iPhone / iPad) -->
+<link rel="apple-touch-icon" sizes="180x180" href="fitness-app-logo-180x180.png">
+<!-- Pour les onglets de navigateur (ordinateur et mobile) -->
+<link rel="icon" type="image/png" sizes="32x32" href="fitness-app-logo-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="fitness-app-logo-16x16.png">
+<!-- Pour la compatibilité générale -->
+<link rel="shortcut icon" href="fitness-app-logo-1024x1024.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -42,17 +51,28 @@
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-line">
   <div class="max-w-6xl mx-auto px-4 md:px-6">
     <div class="flex items-center justify-between h-16">
-      <button onclick="goToLanding()" class="flex items-center gap-2.5 hover:opacity-80 transition-opacity text-left">
-        <div class="w-8 h-8 rounded-md bg-ink flex items-center justify-center">
-          <span id="logoLetter" class="font-display text-accent text-lg leading-none">P</span>
+      
+      <!-- Gauche : Bouton Logo (Accueil) + Indicateur de profil (Caché par défaut) -->
+      <div class="flex items-center gap-3 md:gap-4">
+        <button onclick="goToLanding()" class="hover:opacity-80 transition-opacity flex-shrink-0" title="Retour à l'accueil">
+          <img src="fitness-app-logo-180x180.png" alt="Accueil" class="w-10 h-10 rounded-xl object-cover border border-line shadow-sm">
+        </button>
+        
+        <div id="headerProfileIndicator" class="hidden items-center gap-2.5 border-l border-line pl-3 md:pl-4">
+          <div class="w-8 h-8 rounded-md bg-ink flex items-center justify-center">
+            <span id="logoLetter" class="font-display text-accent text-lg leading-none"></span>
+          </div>
+          <span id="logoText" class="font-display text-lg tracking-wide hidden sm:block"></span>
         </div>
-        <span id="logoText" class="font-display text-lg tracking-wide">MON<span class="text-accent">.</span>PROGRAMME</span>
-      </button>
-      <nav class="relative flex items-center gap-1 overflow-x-auto no-scrollbar" id="navTabs">
+      </div>
+
+      <!-- Droite : Navigation (Cachée par défaut sur la page d'accueil) -->
+      <nav class="hidden relative items-center gap-1 overflow-x-auto no-scrollbar" id="navTabs">
         <button data-page="nutrition" class="nav-btn relative px-3.5 md:px-4 py-2 text-sm font-semibold text-inkmuted whitespace-nowrap rounded-lg hover:bg-bg transition-colors">Nutrition</button>
         <button data-page="exercices" class="nav-btn relative px-3.5 md:px-4 py-2 text-sm font-semibold text-inkmuted whitespace-nowrap rounded-lg hover:bg-bg transition-colors">Exercices &amp; Séances</button>
         <span id="navUnderline" class="tab-underline absolute -bottom-[1px] h-[2.5px] bg-accent rounded-full"></span>
       </nav>
+      
     </div>
   </div>
 </header>
@@ -67,15 +87,17 @@
     <p class="text-inkmuted max-w-md mb-8 text-sm md:text-base">Choisis un profil pour accéder à son suivi personnalisé de nutrition et d'entraînement.</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
+      <!-- Théo : Fond de lettre passé en bg-accent pour coller au style de Suzanne -->
       <button onclick="selectProfile('theo')" class="group card-hover bg-white rounded-2xl border border-line p-6 text-left flex items-center justify-between">
         <div>
-          <div class="w-10 h-10 rounded-xl bg-ink text-white flex items-center justify-center font-display text-xl mb-3">T</div>
+          <div class="w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center font-display text-xl mb-3">T</div>
           <h2 class="font-display text-2xl">THÉO</h2>
           <p class="text-xs text-inkmuted mt-1">1m95 · 95kg · Recomposition</p>
         </div>
         <span class="w-8 h-8 rounded-full bg-accentsoft text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors">→</span>
       </button>
 
+      <!-- Suzanne -->
       <button onclick="selectProfile('suzanne')" class="group card-hover bg-white rounded-2xl border border-line p-6 text-left flex items-center justify-between">
         <div>
           <div class="w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center font-display text-xl mb-3">S</div>
@@ -165,6 +187,7 @@ function selectProfile(profile) {
   state.profile = profile;
   const isTheo = profile === 'theo';
   
+  // Mettre à jour l'indicateur dans le header
   document.getElementById("logoLetter").textContent = isTheo ? "T" : "S";
   document.getElementById("logoText").innerHTML = (isTheo ? "THÉO" : "SUZANNE") + '<span class="text-accent">.</span>PROGRAMME';
   document.getElementById("footerText").textContent = `Programme personnalisé — ${isTheo ? 'Théo' : 'Suzanne'} · Document de suivi, à titre informatif.`;
@@ -176,12 +199,20 @@ function goToLanding() {
   state.page = "landing";
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById("page-landing").classList.add("active");
-  document.querySelectorAll(".nav-btn").forEach(b => {
-    b.classList.remove("text-ink");
-    b.classList.add("text-inkmuted");
-  });
+  
+  // Cacher la nav et l'indicateur de profil sur la landing page
+  const navTabs = document.getElementById("navTabs");
+  const profileIndicator = document.getElementById("headerProfileIndicator");
+  
+  navTabs.classList.remove("flex");
+  navTabs.classList.add("hidden");
+  
+  profileIndicator.classList.remove("flex");
+  profileIndicator.classList.add("hidden");
+  
   const underline = document.getElementById("navUnderline");
   if (underline) underline.style.width = "0px";
+  
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -189,12 +220,25 @@ function goToPage(page) {
   state.page = page;
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById("page-" + page).classList.add("active");
+  
+  // Afficher la nav et l'indicateur de profil quand un profil est sélectionné
+  const navTabs = document.getElementById("navTabs");
+  const profileIndicator = document.getElementById("headerProfileIndicator");
+  
+  navTabs.classList.remove("hidden");
+  navTabs.classList.add("flex");
+  
+  profileIndicator.classList.remove("hidden");
+  profileIndicator.classList.add("flex");
+
   document.querySelectorAll(".nav-btn").forEach(b => {
     const isActive = b.dataset.page === page;
     b.classList.toggle("text-ink", isActive);
     b.classList.toggle("text-inkmuted", !isActive);
   });
-  positionUnderline();
+  
+  // Petit délai pour laisser le temps au DOM de passer de hidden à flex avant de calculer la largeur
+  setTimeout(positionUnderline, 10);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
