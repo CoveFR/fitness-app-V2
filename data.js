@@ -175,7 +175,7 @@ const APP_DATA = {
          {
           label: "Largeur & Épaisseur du Dos",
           items: [
-            { name: "Tirage Vertical", sets: "4 séries · 6-8 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre.", docteurFitnessUrl: "https://www.docteur-fitness.com/tirage-vertical-poitrine" },
+            { name: "Tirage Vertical", sets: "3 séries · 12-15 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre.", docteurFitnessUrl: "https://www.docteur-fitness.com/tirage-vertical-poitrine" },
             { name: "Tirage Horizontal poulie basse", sets: "3 séries · 10-12 reps", tags: ["Dos"], note: "Garder le dos fixe, serrer les omoplates en fin de mouvement.", docteurFitnessUrl: "https://www.docteur-fitness.com/tirage-horizontal" },
             { name: "Pull-over à la poulie", sets: "4 séries · 8-10 reps", tags: ["Dos"], note: "Tirer vers les hanches.", docteurFitnessUrl: "https://www.docteur-fitness.com/pull-over-a-la-poulie" },
             { name: "Face Pull Assis", sets: "3 séries · 12-15 reps", tags: ["Dos"], note: "Idéal pour l'isolation des grands dorsaux.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/epaules/tirage-visage-assis" }
@@ -184,11 +184,24 @@ const APP_DATA = {
         {
           label: "Isolation Biceps",
           items: [
-            { name: "Curl Incliné aux Haltères", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-incline-halteres" },
-            { name: "Curl Pupitre (Larry Scott)", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-pupitre" },
-            { name: "Curl Inversé (Prise Pronation)", sets: "3 séries · 12-15 reps", tags: ["Biceps"], note: "Cible le brachial et les avants-bras (complémentaire pour la préhension).", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-inverse-barre" }
+            { name: "Curl à la Barre", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-a-la-barre" },
+            { name: "Curl Marteau Assis", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/biceps/curl-marteau-assis" }
           ]
-        }
+        },
+        {
+          label: "Avant Bras",
+          items: [
+            { name: "Curl Inversé à la Barre", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-inverse-a-la-barre" },
+            { name: "Curl Poignet", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/avant-bras/flexion-du-poignet-a-un-bras-avec-haltere" },
+            { name: "Curl Poignet Inversé", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/avant-bras/curl-inverse-du-poignet-avec-haltere-a-un-bras" }
+          ]
+          },
+          {
+          label: "Bas du Dos",
+          items: [
+            { name: "Extension Lombaire", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/extension-lombaire-au-banc-a-45" }
+          ]
+          }
       ]
     },
     {
