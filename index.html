@@ -87,7 +87,7 @@
     <p class="text-inkmuted max-w-md mb-8 text-sm md:text-base">Choisis un profil pour accéder à son suivi personnalisé de nutrition et d'entraînement.</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
-      <!-- Théo : Fond de lettre passé en bg-accent pour coller au style de Suzanne -->
+      <!-- Théo -->
       <button onclick="selectProfile('theo')" class="group card-hover bg-white rounded-2xl border border-line p-6 text-left flex items-center justify-between">
         <div>
           <div class="w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center font-display text-xl mb-3">T</div>
@@ -118,7 +118,7 @@
       <h1 class="font-display text-3xl md:text-5xl">DÉFICIT CONTRÔLÉ</h1>
       <p class="text-inkmuted mt-2 max-w-lg">Coche chaque repas au fur et à mesure — les totaux ci-dessous se mettent à jour automatiquement.</p>
     </div>
-    <div class="font-mono text-xs text-inkfaint" id="profileMeta">1m95 · 95kg · 5x muscu + 2-3x tapis incliné/sem.</div>
+    <div class="font-mono text-xs text-inkfaint" id="profileMeta"></div>
   </div>
 
   <div class="mt-6 bg-white rounded-2xl border border-line p-5 md:p-6">
@@ -179,18 +179,29 @@ const state = {
   pecsVariant: "epaules",
 };
 
-MEALS.forEach(m => { state.mealEaten[m.id] = false; state.mealOption[m.id] = 0; });
-
 /* ================= PROFILE & NAV ================= */
 
 function selectProfile(profile) {
   state.profile = profile;
+  loadProfile(profile); // Charge dynamiquement les données du profil depuis data.js
+  
   const isTheo = profile === 'theo';
   
-  // Mettre à jour l'indicateur dans le header
+  // Mettre à jour l'indicateur dans le header et les métas
   document.getElementById("logoLetter").textContent = isTheo ? "T" : "S";
   document.getElementById("logoText").innerHTML = (isTheo ? "THÉO" : "SUZANNE") + '<span class="text-accent">.</span>PROGRAMME';
   document.getElementById("footerText").textContent = `Programme personnalisé — ${isTheo ? 'Théo' : 'Suzanne'} · Document de suivi, à titre informatif.`;
+  document.getElementById("profileMeta").textContent = APP_DATA.profiles[profile].meta.info;
+  
+  // Réinitialiser les états des repas pour ce profil
+  state.mealEaten = {};
+  state.mealOption = {};
+  MEALS.forEach(m => { state.mealEaten[m.id] = false; state.mealOption[m.id] = 0; });
+
+  // Mettre à jour l'affichage nutritionnel
+  renderNutritionTotals();
+  renderMeals();
+  renderTips();
   
   goToPage("nutrition");
 }
@@ -295,7 +306,7 @@ function renderNutritionTotals() {
 function renderMeals() {
   const wrap = document.getElementById("mealsWrap");
   wrap.innerHTML = MEALS.map(meal => {
-    const activeIdx = state.mealOption[meal.id];
+    const activeIdx = state.mealOption[meal.id] || 0;
     const opt = meal.options[activeIdx];
     const eaten = state.mealEaten[meal.id];
     return `
@@ -490,9 +501,6 @@ function renderSessionContent() {
 /* ================= INIT ================= */
 
 function init() {
-  renderNutritionTotals();
-  renderMeals();
-  renderTips();
   renderSessionTabs();
   renderFilterChips();
   renderSessionContent();
