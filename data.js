@@ -1,170 +1,279 @@
-/* ================= DONNÉES DU PROGRAMME ================= */
+/* ==========================================================================
+   DONNÉES GLOBALES DE L'APPLICATION (MULTI-PROFILS)
+   ========================================================================== */
 
-const TARGET = { kcal: 2350, p: 190, g: 220, l: 75 };
+const APP_DATA = {
+  profiles: {
+    // ==========================================
+    // PROFIL 1 : THÉO (Profil d'origine)
+    // ==========================================
+    theo: {
+      meta: { 
+        name: "Théo", 
+        info: "1m95 · 95kg · 5x muscu + 2-3x tapis incliné/sem." 
+      },
+      TARGET: { kcal: 2350, p: 190, g: 220, l: 75 },
+      TIPS: [
+        "Varier les sources de glucides complexes (riz, patate douce, avoine) pour éviter la lassitude.",
+        "Boire au moins 3 litres d'eau par jour, surtout avec un apport élevé en protéines.",
+        "Ne pas négliger les lipides : essentiels pour la santé hormonale et articulaire.",
+        "Préparer ses repas à l'avance (batch cooking) pour tenir le déficit sans craquer."
+      ],
+      MEALS: [
+        {
+          id: 'm1',
+          label: 'Petit-déjeuner / Collation 1',
+          target: { kcal: 500, p: 40, g: 50, l: 15 },
+          options: [
+            { name: 'Bowl Skyr & Muesli', tag: 'Idée maison', prep: '3 min · bol', desc: '350g skyr 0% + 60g muesli avoine + 20g beurre de cacahuète + 1 fruit' },
+            { name: 'Pancakes Protéinés', tag: 'Gourmand', prep: '10 min · poêle', desc: '80g flocons d’avoine mixés + 30g whey + 2 œufs + 100ml lait écrémé' },
+            { name: 'Omelette Salée & Pain', tag: 'Salé', prep: '8 min · poêle', desc: '3 œufs entiers + 100g blancs de poulet en dés + 2 tranches pain complet' }
+          ]
+        },
+        {
+          id: 'm2',
+          label: 'Déjeuner',
+          target: { kcal: 700, p: 60, g: 70, l: 20 },
+          options: [
+            { name: 'Poulet, Riz & Légumes', tag: 'Classique', prep: '15 min · poêle', desc: '180g blanc de poulet + 80g riz basmati cru + brocolis + 1 càs huile d’olive' },
+            { name: 'Bœuf Haché & Patate Douce', tag: 'Réconfortant', prep: '15 min · poêle', desc: '160g steak haché 5% + 250g patates douces au four + haricots verts' },
+            { name: 'Pavé de Saumon & Pâtes', tag: 'Complet', prep: '15 min · casserole', desc: '150g pavé de saumon + 70g pâtes semi-complètes + épinards frais' }
+          ]
+        },
+        {
+          id: 'm3',
+          label: 'Collation / Pre-Workout',
+          target: { kcal: 350, p: 30, g: 35, l: 10 },
+          options: [
+            { name: 'Shaker Whey & Avoine', tag: 'Rapide', prep: '2 min · shaker', desc: '40g whey isolate + 50g poudre d’avoine instantanée + eau ou lait' },
+            { name: 'Fromage Blanc & Amandes', tag: 'Frais', prep: '2 min · bol', desc: '250g fromage blanc 0% + 20g amandes entières + 1 cuillère de miel' },
+            { name: 'Sandwich Dinde & Fromage', tag: 'Sur le pouce', prep: '3 min · montage', desc: '2 tranches pain de mie complet + 80g blanc de dinde + 30g emmental léger' }
+          ]
+        },
+        {
+          id: 'm4',
+          label: 'Dîner',
+          target: { kcal: 800, p: 60, g: 65, l: 30 },
+          options: [
+            { name: 'Blancs de Dinde & Quinoa', tag: 'Léger', prep: '20 min · poêle', desc: '200g escalopes de dinde + 70g quinoa cru + ratatouille de légumes' },
+            { name: 'Steak de Bœuf & Purée', tag: 'Traditionnel', prep: '15 min · casserole', desc: '180g bœuf 5% + 300g purée de pommes de terre maison + salade verte' },
+            { name: 'Omelette Riche & Salade', tag: 'Économique', prep: '10 min · poêle', desc: '4 œufs + 80g thon en boîte + 50g feta + grande salade composée' }
+          ]
+        }
+      ]
+    },
 
-const TIPS = [
-  "Skyr vs Fromage blanc 0% : passe aux marques distributeur (Lidl/Aldi/Carrefour) ou alterne avec le fromage blanc 0%, 2x moins cher pour une quantité de protéines quasi équivalente.",
-  "Œufs & thon : tes meilleures sources de protéines à bas coût. Un pack de 30 œufs ou des boîtes de thon en lot restent imbattables.",
-  "Surgelés & conserves : légumes surgelés et riz/lentilles en conserve font gagner un temps précieux sans gaspillage.",
-  "Beurre de cacahuète en gros : un pot de 1kg pur 100% cacahuète en ligne (Prozis, MyProtein, Koro...) revient à 6-8€/kg au lieu de 15€/kg en supermarché.",
-  "Sauces légères : la crème fluide 4-5% MG apporte la même texture que la crème 30% pour 3x moins de calories.",
-  "Sauce blanche maison : mélange 100g de skyr avec ail haché, jus de citron, sel, poivre et ciboulette/paprika pour une sauce hyperprotéinée façon kebab."
-];
+    // ==========================================
+    // PROFIL 2 : SUZANNE (Nouveau profil)
+    // ==========================================
+    suzanne: {
+      meta: { 
+        name: "Suzanne", 
+        info: "1m69 · 43kg · 3-4x muscu/sem. · Prise de poids" 
+      },
+      TARGET: { kcal: 2300, p: 100, g: 295, l: 80 },
+      TIPS: [
+        "Miser sur des aliments denses en calories mais faciles à digérer (oléagineux, fruits secs, huiles de qualité).",
+        "Ne pas sauter de repas : la régularité est la clé absolue pour une prise de poids saine et progressive.",
+        "Associer systématiquement une source de protéines à chaque repas pour soutenir la construction musculaire.",
+        "Boire des calories si l'appétit est parfois limité (smoothies enrichis au beurre de cacahuète ou flacons d'avoine)."
+      ],
+      MEALS: [
+        {
+          id: 's_m1',
+          label: 'Petit-déjeuner / Collation 1',
+          target: { kcal: 400, p: 20, g: 50, l: 15 },
+          options: [
+            { name: 'Skyr Miel Muesli', tag: 'Liquide express', prep: '2 min · shaker', desc: '300g skyr 0% + 60g muesli bio + 15g miel + 15g beurre de cacahuète' },
+            { name: 'Tartines Avocat et Œufs', tag: 'Salé', prep: '5 min · poêle', desc: '2 tranches pain complet + 1/2 avocat + 2 œufs + filet huile d’olive' },
+            { name: 'Le Bol Croquant aux Oléagineux', tag: 'Frais', prep: '2 min · bol', desc: '200g fromage blanc/skyr + amandes/noix + pépites chocolat noir + fruits rouges' },
+            { name: 'Pancakes Express à l’Avoine', tag: 'Idée maison', prep: '10 min · poêle', desc: '50g flocons d’avoine mixés + 2 œufs + 1 banane + miel' }
+          ]
+        },
+        {
+          id: 's_m2',
+          label: 'Déjeuner',
+          target: { kcal: 750, p: 30, g: 100, l: 25 },
+          options: [
+            { name: 'Bowl Poulet, Riz et Avocat', tag: 'Complet', prep: '15 min · poêle', desc: '120g poulet + 100g riz cru + 1/2 avocat + maïs + haricots rouges + 2 càs huile d’olive' },
+            { name: 'Pâtes au Saumon et à la Crème', tag: 'Gourmand', prep: '12 min · casserole', desc: '100g pâtes crues + pavé de saumon + 3 càs crème fraîche entière + épinards' },
+            { name: 'Curry de Pois Chiches et Lait de Coco', tag: 'Végétarien', prep: '20 min · casserole', desc: '150g pois chiches + 80g riz thaï cru + patate douce + 100ml lait de coco entier + curry' },
+            { name: 'Wraps Bœuf et Houmous', tag: 'Sur le pouce', prep: '10 min · poêle', desc: '2 wraps + 120g bœuf haché 15% MG + houmous + crudités + fromage râpé' }
+          ]
+        },
+        {
+          id: 's_m3',
+          label: 'Collation 2 / Pre-Workout',
+          target: { kcal: 400, p: 20, g: 45, l: 15 },
+          options: [
+            { name: 'Smoothie Banane & Beurre de Cacahuète', tag: 'Liquide express', prep: '3 min · blender', desc: '250ml lait entier + 1 banane + 30g avoine en poudre + 20g beurre de cacahuète' },
+            { name: 'Porridge Gourmand Chocolat', tag: 'Chaud', prep: '5 min · casserole', desc: '50g flocons d’avoine + 200ml lait + 1 carré de chocolat noir fondu + compote' },
+            { name: 'Sandwich Complet Dinde & Fromage', tag: 'Salé', prep: '3 min · montage', desc: '2 tranches de pain de mie complet + 60g blanc de dinde + 30g emmental + un fruit' },
+            { name: 'Bowl Fromage Blanc & Granola', tag: 'Frais', prep: '2 min · bol', desc: '200g fromage blanc + 50g granola croquant + 1 poignée de fruits secs' }
+          ]
+        },
+        {
+          id: 's_m4',
+          label: 'Dîner',
+          target: { kcal: 750, p: 30, g: 100, l: 25 },
+          options: [
+            { name: 'Poulet Crème Moutarde et Pommes de Terre', tag: 'Réconfortant', prep: '20 min · poêle', desc: '120g poulet aux oignons + 3 càs crème fraîche + moutarde + 250g pommes de terre rissolées + haricots verts' },
+            { name: 'Burger Maison et Frites de Patate Douce', tag: 'Plaisir', prep: '20 min · four', desc: 'Pain burger + steak 15% + cheddar + sauce + frites de patate douce au four' },
+            { name: 'Risotto Crémeux et Dinde', tag: 'Plat en sauce', prep: '25 min · casserole', desc: '80g riz à risotto au bouillon + mascarpone/parmesan + champignons + escalopes de dinde' },
+            { name: 'Omelette Pommes de Terre et Fromage', tag: 'Économique', prep: '10 min · poêle', desc: 'Omelette 4 œufs + dés de pommes de terre rissolées + gruyère + salade' }
+          ]
+        }
+      ]
+    }
+  },
 
-const MEALS = [
-  {
-    id: "petit-dej",
-    label: "1 · Petit-déjeuner",
-    target: { kcal: 550, p: 45, g: 60, l: 15 },
-    options: [
-      { name: "Skyr Miel Muesli", tag: "Coup de cœur", prep: "2 min · direct", desc: "300g Skyr 0% + 60g muesli bio sans sucres ajoutés + 15g miel + 15g beurre de cacahuète. Riche en caséine, idéal pour rassasier un grand gabarit pendant des heures." },
-      { name: "Omelette & Toast PB", tag: "Économique", prep: "5 min · poêle", desc: "3 œufs entiers battus + 2 tranches de pain complet grillé avec 15g beurre de cacahuète + 1 banane." },
-      { name: "Bowl Express Avoine", tag: "Rapide", prep: "2 min · bol", desc: "250g fromage blanc 0% + 60g flocons d'avoine + 1 scoop de whey (optionnel) + 15g beurre de cacahuète mélangé." },
-      { name: "Pancakes Prot' Avoine-Banane", tag: "Idée maison", prep: "8 min · poêle", desc: "60g flocons d'avoine mixés + 1 banane écrasée + 2 œufs + 1 scoop whey, cuits à la poêle sans matière grasse. Nappe de 10g miel." }
-    ]
-  },
-  {
-    id: "dejeuner",
-    label: "2 · Déjeuner",
-    target: { kcal: 650, p: 50, g: 70, l: 18 },
-    options: [
-      { name: "Poulet Rice Express", tag: "Top budget", prep: "8 min · poêle", desc: "160g escalope de poulet ou dinde + 250g riz basmati cuit + 200g poêlée de légumes surgelés + 10g huile d'olive." },
-      { name: "Assiette Thon & Patate Douce", tag: "Sans cuisson longue", prep: "6 min · micro-ondes", desc: "1 boîte de thon au naturel (140g égoutté) + 250g patate douce en dés + haricots verts surgelés + 15g mayonnaise allégée." },
-      { name: "Steak Haché & Pâtes Complètes", tag: "Classique", prep: "8 min · casserole", desc: "1-2 steaks hachés 5% MG (125g) + 180g pâtes complètes cuites + sauce tomate basilic + légumes au choix." },
-      { name: "Poulet Curry Onctueux", tag: "Plat en sauce", prep: "10 min · poêle", desc: "170g poulet sauté avec oignon, ail, curry, cumin + 70g crème légère 4% (ou skyr) + 220g riz basmati + courgettes/poivrons." },
-      { name: "Chili Con Carne Rapide", tag: "Épices & budget", prep: "10 min · poêle", desc: "160g steak haché 5% + oignon, ail, paprika, piment + 150g haricots rouges + pulpe de tomate + 150g riz cuit." },
-      { name: "Pâtes Poulet Paprika Crème", tag: "Gourmand", prep: "10 min · casserole", desc: "160g dinde/poulet + 180g pâtes complètes + oignon, ail + 80g crème légère 4% + paprika doux & poivre." }
-    ]
-  },
-  {
-    id: "collation",
-    label: "3 · Collation / Pre-Workout",
-    target: { kcal: 350, p: 35, g: 35, l: 10 },
-    options: [
-      { name: "Skyr Gourmand PB", tag: "Top énergie", prep: "1 min · direct", desc: "200g skyr 0% + 15g beurre de cacahuète + 1 pomme ou 1 banane coupée en morceaux." },
-      { name: "Shaker & Tartine Nomade", tag: "Rapide", prep: "1 min · shaker", desc: "1 scoop de whey (30g) dans eau ou lait d'amande + 1 tranche de pain complet avec 15g beurre de cacahuète." },
-      { name: "Fromage Blanc Fruits Rouges", tag: "Idée maison", prep: "1 min · direct", desc: "250g fromage blanc 0% + fruits rouges surgelés + 10g miel + 10g amandes effilées." }
-    ]
-  },
-  {
-    id: "diner",
-    label: "4 · Dîner",
-    target: { kcal: 800, p: 60, g: 55, l: 30 },
-    options: [
-      { name: "Pavé de Saumon & Lentilles", tag: "Riche en oméga-3", prep: "7 min · poêle", desc: "180g pavé de saumon poêlé sans matière grasse + 200g lentilles cuites en conserve + brocolis + 10g huile d'olive." },
-      { name: "Pavé de Saumon Sauce Aneth-Ail", tag: "Version onctueuse", prep: "10 min · poêle", desc: "180g saumon poêlé + sauce 60g crème légère 4% + jus de citron + ail pressé + aneth + 200g pommes de terre + épinards." },
-      { name: "Omelette Géante & Pommes de Terre", tag: "Petit prix", prep: "8 min · poêle", desc: "4 œufs entiers + 50g blanc de dinde en dés + 250g pommes de terre vapeur + salade verte, dressing huile d'olive/vinaigre." },
-      { name: "Poêlée Mexicaine au Haché", tag: "Épicé", prep: "8 min · poêle", desc: "180g steak haché 5% émietté + 150g haricots rouges + 100g maïs + poivrons/oignons + épices mexicaines." },
-      { name: "Dahl de Lentilles Coral & Poulet", tag: "Épices & onctueux", prep: "12 min · casserole", desc: "150g blanc de poulet + 180g lentilles corail cuites au lait de coco léger + ail, gingembre, curcuma, garam masala + 150g patate douce." },
-      { name: "Cabillaud, Riz & Sauce Curry Léger", tag: "Idée maison", prep: "12 min · poêle", desc: "180g cabillaud + 200g riz cuit + sauce 60g crème légère 4% + curry doux + épinards frais fondus." }
-    ]
-  }
-];
+  // ==========================================
+  // SÉANCES DE SPORT GLOBALLES (Identiques)
+  // ==========================================
+  sessions: [
+    {
+      id: "jambes",
+      title: "Jambes (Quads / Ischios / Mollets)",
+      tags: ["Quadriceps", "Ischios", "Mollets"],
+      note: "Séance exigeante, privilégier l'amplitude complète et le contrôle de la phase excentrique.",
+      groups: [
+        {
+          label: "Quadriceps & Chaîne Antérieure",
+          items: [
+            { name: "Squat Barre (ou Goblet Squat)", sets: "4 séries · 6-8 reps", tags: ["Quadriceps"], note: "Descente contrôlée, buste fier." },
+            { name: "Leg Press Inclinée", sets: "3 séries · 8-10 reps", tags: ["Quadriceps"], note: "Pieds bas sur la plateforme pour cibler les quads." },
+            { name: "Leg Extension", sets: "3 séries · 12-15 reps", tags: ["Quadriceps"], note: "Pause de 1 seconde en contraction haute." }
+          ]
+        },
+        {
+          label: "Ischios & Fessiers",
+          items: [
+            { name: "Souverain / Soulevé de Terre Roumain", sets: "4 séries · 8-10 reps", tags: ["Ischios"], note: "Garder les jambes semi-tendues, dos bien droit." },
+            { name: "Leg Curl Assis (ou Couché)", sets: "3 séries / 10-12 reps", tags: ["Ischios"], note: "Ne pas décoller les fessiers du siège." }
+          ]
+        },
+        {
+          label: "Mollets",
+          items: [
+            { name: "Extension Mollets Debout", sets: "4 séries · 12-15 reps", tags: ["Mollets"], note: "Étirement maximal en bas, contraction forte en haut." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "dos_biceps",
+      title: "Dos & Biceps",
+      tags: ["Dos", "Biceps", "Arrière d'épaule"],
+      note: "Attention à bien initier le tirage avec les coudes et non avec les mains pour maximiser le recrutement du grand dorsal.",
+      groups: [
+        {
+          label: "Largeur & Épaisseur du Dos",
+          items: [
+            { name: "Tractions (ou Tirage Vertical)", sets: "4 séries · 6-8 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre." },
+            { name: "Rowing Buste Penché (Barre ou Halteres)", sets: "4 séries · 8-10 reps", tags: ["Dos"], note: "Tirer vers les hanches." },
+            { name: "Tirage Horizontal poulie basse", sets: "3 séries · 10-12 reps", tags: ["Dos"], note: "Garder le dos fixe, serrer les omoplates en fin de mouvement." },
+            { name: "Pulldown Bras Tendus", sets: "3 séries · 12-15 reps", tags: ["Dos"], note: "Idéal pour l'isolation des grands dorsaux." }
+          ]
+        },
+        {
+          label: "Isolation Biceps",
+          items: [
+            { name: "Curl Incliné aux Haltères", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal." },
+            { name: "Curl Pupitre (Larry Scott)", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps." },
+            { name: "Curl Inversé (Prise Pronation)", sets: "3 séries · 12-15 reps", tags: ["Biceps"], note: "Cible le brachial et les avants-bras (complémentaire pour la préhension)." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "pecs_epaules",
+      title: "Pecs & Épaules / Triceps",
+      tags: ["Pectoraux", "Épaules", "Triceps"],
+      note: "Séance haut du corps polyvalente. Utilise l'option de variante ci-dessous selon ton focus.",
+      variant: true,
+      groups: [
+        {
+          label: "Développement Pectoral",
+          items: [
+            { name: "Développé Couché Incliné (Haltères ou Barre)", sets: "4 séries · 6-8 reps", tags: ["Pectoraux"], note: "Cible le faisceau claviculaire (haut des pecs)." },
+            { name: "Développé Couché Décliné (ou Dips)", sets: "3 séries · 8-10 reps", tags: ["Pectoraux"], note: "Excellente contraction sur le bas des pecs." },
+            { name: "Écartés Poulie Vis-à-Vis", sets: "3 séries · 12-15 reps", tags: ["Pectoraux"], note: "Garder une légère flexion des coudes constante." }
+          ]
+        },
+        {
+          label: "Épaules & Triceps (Option 1 : Focus Épaules)",
+          variantKey: "epaules",
+          items: [
+            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive." },
+            { name: "Élévations Latérales aux Haltères", sets: "4 séries · 12-15 reps", tags: ["Épaules"], note: "Mouvement fluide, emmener les coudes vers le haut." },
+            { name: "Extension Triceps à la Poulie Haute", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Coudes serrés le long du corps." }
+          ]
+        },
+        {
+          label: "Épaules & Triceps (Option 2 : Focus Triceps)",
+          variantKey: "triceps",
+          items: [
+            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive." },
+            { name: "Extension Triceps Nuque (Haltère ou Poulie)", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Étirement complet de la longue portion." },
+            { name: "Dips sur Banc (ou Machine)", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Garder le buste droit pour cibler en priorité les triceps." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "fessiers",
+      title: "Fessiers & Ischios",
+      tags: ["Fessiers", "Ischios"],
+      note: "Focus bas du corps axé sur la chaîne postérieure et le galbe.",
+      groups: [
+        {
+          label: "Cible Fessiers",
+          items: [
+            { name: "Hip Thrust à la Barre", sets: "4 séries · 8-10 reps", tags: ["Fessiers"], note: "Rétroversion du bassin en haut, pause de 1 seconde." },
+            { name: "Fentes Bulgarie (Haltères)", sets: "3 séries · 10 reps / jambe", tags: ["Fessiers"], note: "Inclinaison du buste légèrement vers l'avant pour cibler les fessiers." },
+            { name: "Glute Ham Raise (ou Hyperextensions fessiers)", sets: "3 séries · 12 reps", tags: ["Fessiers"], note: "Arrondir légèrement le haut du dos pour isoler les fessiers." }
+          ]
+        },
+        {
+          label: "Finition Ischios",
+          items: [
+            { name: "Good Morning (Barre légère)", sets: "3 séries · 10-12 reps", tags: ["Ischios"], note: "Mouvement de charnière de hanche, dos plat." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "abdos",
+      title: "Abdos & Core (Gainage)",
+      tags: ["Abdominaux", "Core"],
+      note: "À placer en fin de séance ou en jour dédié. Vise la contraction maximale plutôt que la vitesse.",
+      groups: [
+        {
+          label: "Renforcement Profond & Grand Droits",
+          items: [
+            { name: "Crunch à la Poulie Haute", sets: "3 séries · 12-15 reps", tags: ["Abdominaux"], note: "Enrouler la colonne vertébrale, ne pas tirer avec les bras." },
+            { name: "Relevé de Jambes Suspendu à la Barre", sets: "3 séries · 10-12 reps", tags: ["Abdominaux"], note: "Éviter l'élan, amener les genoux haut vers la poitrine." },
+            { name: "Gainage Planche Frontale", sets: "3 séries · 45s à 1 min", tags: ["Core"], note: "Bassin rétroversé, abdos et fessiers contractés à fond." },
+            { name: "Pallof Press à la Poulie", sets: "3 séries · 12 reps / côté", tags: ["Core"], note: "Anti-rotation stricte pour renforcer les obliques." }
+          ]
+        }
+      ]
+    }
+  ]
+};
 
-const SESSIONS = [
-  {
-    id: "jambes",
-    title: "Jambes",
-    tags: ["Quadriceps", "Ischios", "Adducteurs"],
-    groups: [
-      { label: "Échauffement", items: [
-        { name: "Échauffement général", sets: "5-10 min", note: "Mobilité hanches / chevilles, montées de genoux.", tags: ["Échauffement"] }
-      ]},
-      { label: "Mouvements de force", items: [
-        { name: "Squat", sets: "2 séries échauffement + 3 séries lourdes", docteurFitnessUrl: "https://www.docteur-fitness.com/exercice-squat", tags: ["Quadriceps"] },
-        { name: "Presse inclinée", sets: "1 série échauffement + 3 séries lourdes", docteurFitnessUrl: "https://www.docteur-fitness.com/presse-a-cuisses", tags: ["Quadriceps"] },
-        { name: "Gobelet squat", sets: "3 x 8 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/goblet-squat", tags: ["Quadriceps"] }
-      ]},
-      { label: "Isolation", items: [
-        { name: "Leg extension", sets: "3 x 12 reps + 8 reps dégressif", docteurFitnessUrl: "https://www.docteur-fitness.com/leg-extension", tags: ["Quadriceps"] },
-        { name: "Leg curl", sets: "4 x 12/10 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/leg-curl-allonge", tags: ["Ischios"] },
-        { name: "Adducteur", sets: "3 x 8 reps lourd", docteurFitnessUrl: "https://www.docteur-fitness.com/adducteurs-a-la-machine", tags: ["Adducteurs"] },
-        { name: "Abducteur", sets: "3 x 7-7-7-7 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/abducteurs-a-la-machine", tags: ["Adducteurs"] }
-      ]}
-    ]
-  },
-  {
-    id: "dos-biceps",
-    title: "Dos & Biceps",
-    tags: ["Dos", "Biceps", "Lombaires"],
-    groups: [
-      { label: "Échauffement", items: [
-        { name: "Échauffement général", sets: "5-10 min", note: "Rotations d'épaules, activation scapulaire.", tags: ["Échauffement"] }
-      ]},
-      { label: "Dos", items: [
-        { name: "Traction", sets: "4 séries max + 1/2 série en grippe", docteurFitnessUrl: "https://www.docteur-fitness.com/tractions-prise-en-pronation", tags: ["Dos"] },
-        { name: "Tirage vertical", sets: "4 x 12 reps ou 3 x 8 reps lourd", note: "Prise neutre ou serrée.", docteurFitnessUrl: "https://www.docteur-fitness.com/tirage-vertical-poitrine", tags: ["Dos"] },
-        { name: "Tirage horizontal unilatéral", sets: "3 x 10/8 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/rowing-haltere-unilateral", tags: ["Dos"] },
-        { name: "Face pull", sets: "3 x 12/10 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/face-pull", tags: ["Dos"] },
-        { name: "Pull-over", sets: "3 x 12/10 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/pull-over-a-la-poulie-haute", tags: ["Dos"] }
-      ]},
-      { label: "Biceps & avant-bras", items: [
-        { name: "Double biceps", sets: "4 x 10/8 reps dégressif", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-biceps-a-la-poulie-haute", tags: ["Biceps"] },
-        { name: "Biceps poulie basse", sets: "4 x 10/8 reps dégressif", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-biceps-poulie-basse", tags: ["Biceps"] },
-        { name: "Curl marteau", sets: "3 x 10/8 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-marteau", tags: ["Biceps"] },
-        { name: "Curl inversé", sets: "3 x 12-15 reps, charge légère", note: "Ajout coach : cible les extenseurs de l'avant-bras, complémentaire des curls (fléchisseurs). Placé en fin de séance.", badge: "Nouveau", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-inverse-a-la-barre", tags: ["Biceps"] }
-      ]},
-      { label: "Lombaires", items: [
-        { name: "Extension lombaire", sets: "3 x 10-8-max reps", note: "+ étirements lombaires en fin de série.", docteurFitnessUrl: "https://www.docteur-fitness.com/extensions-lumbales-au-banc", tags: ["Lombaires"] }
-      ]}
-    ]
-  },
-  {
-    id: "pecs",
-    title: "Pecs & Épaules/Triceps",
-    tags: ["Pecs", "Épaules", "Triceps"],
-    note: "4 séries à poids léger (12-10 reps) OU 3 séries à poids lourd (10-8 reps). Choisis 3-4 exercices pecs, puis la variante Épaules ou Triceps du jour.",
-    variant: true,
-    groups: [
-      { label: "Pecs (base commune)", items: [
-        { name: "Développé couché avec haltères", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-couche-halteres", tags: ["Pecs"] },
-        { name: "Écarté couché avec haltères", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/ecarte-couche-halteres", tags: ["Pecs"] },
-        { name: "Développé incliné machine convergente", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-incline-a-la-machine", tags: ["Pecs"] },
-        { name: "Pec-deck / Butterfly", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/pec-deck", tags: ["Pecs"] },
-        { name: "Développé couché Smith machine", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-couche-smith-machine", tags: ["Pecs"] },
-        { name: "Dips inclinés", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/dips", tags: ["Pecs"] }
-      ]},
-      { label: "Variante Épaules", variantKey: "epaules", items: [
-        { name: "Élévation latérale haltères", sets: "3-4 séries · voir schéma", note: "Deltoïde latéral.", docteurFitnessUrl: "https://www.docteur-fitness.com/elevations-laterales-halteres", tags: ["Épaules"] },
-        { name: "Développé assis avec haltères", sets: "3-4 séries · voir schéma", note: "Deltoïde antérieur.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-epaules-halteres", tags: ["Épaules"] },
-        { name: "Pec-deck inversé", sets: "3-4 séries · voir schéma", note: "Deltoïde postérieur.", docteurFitnessUrl: "https://www.docteur-fitness.com/oiseau-a-la-machine-pec-deck", tags: ["Épaules"] },
-        { name: "Rotation externe", sets: "3 x 12-15 reps", note: "Santé de la coiffe des rotateurs.", docteurFitnessUrl: "https://www.docteur-fitness.com/rotations-externes-a-la-poulie", tags: ["Épaules"] }
-      ]},
-      { label: "Variante Triceps", variantKey: "triceps", items: [
-        { name: "Extension des avant-bras couché, haltères", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/barre-au-front-halteres", tags: ["Triceps"] },
-        { name: "Extension verticale alternée, haltères", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/extension-triceps-unilaterale-haltere", tags: ["Triceps"] },
-        { name: "Extension verticale à deux mains, haltères", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/extension-triceps-deux-mains-haltere", tags: ["Triceps"] },
-        { name: "Extension verticale à la poulie haute", sets: "3-4 séries · voir schéma", docteurFitnessUrl: "https://www.docteur-fitness.com/extension-triceps-poulie-haute-corde", tags: ["Triceps"] }
-      ]}
-    ]
-  },
-  {
-    id: "fessiers",
-    title: "Fessiers",
-    tags: ["Fessiers", "Ischios"],
-    groups: [
-      { label: "Programme", items: [
-        { name: "Hip Thrust Machine", sets: "3-4 x 10-12 reps", badge: "Suggestion coach", note: "Séries/reps non précisées dans tes notes originales — base de départ à ajuster.", docteurFitnessUrl: "https://www.docteur-fitness.com/hip-thrust-a-la-machine", tags: ["Fessiers"] },
-        { name: "Fente bulgare avec haltère", sets: "3 x 10-12 reps / jambe", badge: "Suggestion coach", docteurFitnessUrl: "https://www.docteur-fitness.com/fentes-bulgares", tags: ["Fessiers"] },
-        { name: "Step up poulie", sets: "3 x 10-12 reps / jambe", badge: "Suggestion coach", docteurFitnessUrl: "https://www.docteur-fitness.com/step-up", tags: ["Fessiers"] },
-        { name: "RDL Smith machine", sets: "3 x 10 reps", badge: "Suggestion coach", note: "Charnière de hanche, tension ischios/fessiers.", docteurFitnessUrl: "https://www.docteur-fitness.com/souleve-de-terre-jambes-tendues", tags: ["Ischios"] }
-      ]}
-    ]
-  },
-  {
-    id: "abdos",
-    title: "Abdos",
-    tags: ["Abdos", "Gainage"],
-    groups: [
-      { label: "Isolation", items: [
-        { name: "Crunch poulie", sets: "3 x 10 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/crunch-a-la-poulie-haute", tags: ["Abdos"] },
-        { name: "Flexions latérales à la poulie", sets: "3 x 10 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/flexion-laterale-a-la-poulie", tags: ["Abdos"] }
-      ]},
-      { label: "Circuit (x3 tours)", items: [
-        { name: "Relevés de jambes", sets: "20 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/releve-de-jambes-suspendu", tags: ["Abdos"] },
-        { name: "Battement de jambes", sets: "20 reps", docteurFitnessUrl: "https://www.docteur-fitness.com/battements-de-jambes", tags: ["Abdos"] },
-        { name: "Planche", sets: "1 min", docteurFitnessUrl: "https://www.docteur-fitness.com/planche-gainage", tags: ["Gainage"] }
-      ]}
-    ]
-  }
-];
+// ==========================================================================
+// VARIABLES DE LIAISON DYNAMIQUES (pour compatibilité avec le script interface)
+// ==========================================================================
+let TARGET, MEALS, TIPS;
+const SESSIONS = APP_DATA.sessions;
+
+// Fonction utilitaire appelée lors de la sélection du profil dans l'interface
+function loadProfile(profileKey) {
+  const profileData = APP_DATA.profiles[profileKey];
+  if (!profileData) return;
+  
+  TARGET = profileData.TARGET;
+  MEALS = profileData.MEALS;
+  TIPS = profileData.TIPS;
+}
