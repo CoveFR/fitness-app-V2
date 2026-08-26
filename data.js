@@ -141,7 +141,7 @@ const APP_DATA = {
           label: "Quadriceps & Chaîne Antérieure",
           items: [
             { name: "Squat Barre (ou Goblet Squat)", sets: "4 séries · 6-8 reps", tags: ["Quadriceps"], note: "Descente contrôlée, buste fier.", docteurFitnessUrl: "https://www.docteur-fitness.com/squat" },
-            { name: "Leg Press Inclinée", sets: "3 séries · 8-10 reps", tags: ["Quadriceps"], note: "Pieds bas sur la plateforme pour cibler les quads.", docteurFitnessUrl: "https://www.docteur-fitness.com/presse-a-cuisses" },
+            { name: "Leg Press Inclinée", sets: "3 séries · 8-10 reps", tags: ["Quadriceps"], note: "Pieds bas sur la plateforme pour cibler les quads.", docteurFitnessUrl: "https://www.docteur-fitness.com/presse-a-cuisses-inclinee" },
             { name: "Leg Extension", sets: "3 séries · 12-15 reps", tags: ["Quadriceps"], note: "Pause de 1 seconde en contraction haute.", docteurFitnessUrl: "https://www.docteur-fitness.com/leg-extension" }
           ]
         },
@@ -149,13 +149,13 @@ const APP_DATA = {
           label: "Ischios & Fessiers",
           items: [
             { name: "Souverain / Soulevé de Terre Roumain", sets: "4 séries · 8-10 reps", tags: ["Ischios"], note: "Garder les jambes semi-tendues, dos bien droit.", docteurFitnessUrl: "https://www.docteur-fitness.com/souleve-de-terre-roumain" },
-            { name: "Leg Curl Assis (ou Couché)", sets: "3 séries / 10-12 reps", tags: ["Ischios"], note: "Ne pas décoller les fessiers du siège.", docteurFitnessUrl: "https://www.docteur-fitness.com/leg-curl" }
+            { name: "Leg Curl Allongé", sets: "3 séries / 10-12 reps", tags: ["Ischios"], note: "Ne pas décoller les fessiers du siège.", docteurFitnessUrl: "https://www.docteur-fitness.com/leg-curl" }
           ]
         },
         {
           label: "Mollets",
           items: [
-            { name: "Extension Mollets Debout", sets: "4 séries · 12-15 reps", tags: ["Mollets"], note: "Étirement maximal en bas, contraction forte en haut.", docteurFitnessUrl: "https://www.docteur-fitness.com/mollets-debout" }
+            { name: "Extension Mollets Debout (Smith Machine)", sets: "4 séries · 12-15 reps", tags: ["Mollets"], note: "Étirement maximal en bas, contraction forte en haut.", docteurFitnessUrl: "https://www.docteur-fitness.com/extensions-des-mollets-debout-a-la-smith-machine" }
           ]
         }
       ]
