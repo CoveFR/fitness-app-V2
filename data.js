@@ -194,14 +194,14 @@ const APP_DATA = {
             { name: "Curl Inversé à la Barre", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-inverse-a-la-barre" },
             { name: "Curl Poignet", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/avant-bras/flexion-du-poignet-a-un-bras-avec-haltere" },
             { name: "Curl Poignet Inversé", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/avant-bras/curl-inverse-du-poignet-avec-haltere-a-un-bras" }
-          ]
-          },
-          {
+           ]
+         },
+         {
           label: "Bas du Dos",
           items: [
             { name: "Extension Lombaire", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/extension-lombaire-au-banc-a-45" }
-          ]
-          }
+           ]
+         }
       ]
     },
     {
