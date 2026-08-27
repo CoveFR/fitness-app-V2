@@ -248,22 +248,23 @@ const APP_DATA = {
         {
           label: "Cible Fessiers",
           items: [
-            { name: "Hip Thrust à la Barre", sets: "4 séries · 8-10 reps", tags: ["Fessiers"], note: "Rétroversion du bassin en haut, pause de 1 seconde.", docteurFitnessUrl: "https://www.docteur-fitness.com/hip-thrust" },
-            { name: "Fentes Bulgarie (Haltères)", sets: "3 séries · 10 reps / jambe", tags: ["Fessiers"], note: "Inclinaison du buste légèrement vers l'avant pour cibler les fessiers.", docteurFitnessUrl: "https://www.docteur-fitness.com/fentes-bulgares" },
-            { name: "Glute Ham Raise (ou Hyperextensions fessiers)", sets: "3 séries · 12 reps", tags: ["Fessiers"], note: "Arrondir légèrement le haut du dos pour isoler les fessiers.", docteurFitnessUrl: "https://www.docteur-fitness.com/hyperextensions" }
+            { name: "Hip Thrust à la Barre", sets: "4 séries · 10-12 reps", tags: ["Fessiers"], note: "Bien contracter les fessiers, pause de 1 seconde en haut.", docteurFitnessUrl: "https://www.docteur-fitness.com/hip-thrust" },
+            { name: "Fentes Bulgarie (Haltères)", sets: "3 séries · 10 reps / jambe", tags: ["Fessiers"], note: "Inclinaison du buste légèrement vers l'avant pour cibler les fessiers, éloigner le poid vers l'avant.", docteurFitnessUrl: "https://www.docteur-fitness.com/fentes-bulgares" },
+            { name: "Step Up Poulie", sets: "3 séries · 12 reps", tags: ["Fessiers"], note: "Banc en face de la poulie, poulie régler au plus bas, pousser la jambe en arrière à la descente.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/fessiers/fente-arriere-avec-halteres-sur-marche" },
+            { name: "RDL", sets: "4 séries · 10-12 reps", tags: ["Fessiers"], note: "Pied largeur de hanche, pousser le hanches le plus possible vers l'arrière et remonter juste après, ne pas cambrer le dos.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/fessiers/souleve-de-terre-roumain" }
           ]
         },
         {
-          label: "Finition Ischios",
+          label: "Finition Abducteur",
           items: [
-            { name: "Good Morning (Barre légère)", sets: "3 séries · 10-12 reps", tags: ["Ischios"], note: "Mouvement de charnière de hanche, dos plat.", docteurFitnessUrl: "https://www.docteur-fitness.com/good-morning" }
+            { name: "Abduction à la Machine", sets: "2 séries · dégressif", tags: ["Fessiers"], note: "Se pencher en avant.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/fessiers/abduction-de-la-hanche-assis" }
           ]
         }
       ]
     },
     {
       id: "abdos",
-      title: "Abdos & Core (Gainage)",
+      title: "Abdos & Core",
       tags: ["Abdominaux", "Core"],
       note: "À placer en fin de séance ou en jour dédié. Vise la contraction maximale plutôt que la vitesse.",
       groups: [
@@ -277,7 +278,7 @@ const APP_DATA = {
         {
           label: "Circuit x3",
           items: [
-            { name: "Relevé de Jambes Assis", sets: " 20 reps", tags: ["Abdominaux"], note: "Éviter l'élan, amener les genoux haut vers la poitrine.", docteurFitnessUrl: "https://www.docteur-fitness.com/releve-de-jambes-assis" },
+            { name: "Relevé de Jambes Assis", sets: " 20 reps", tags: ["Core"], note: "Éviter l'élan, amener les genoux haut vers la poitrine.", docteurFitnessUrl: "https://www.docteur-fitness.com/releve-de-jambes-assis" },
             { name: "Ciseaux", sets: "20 reps", tags: ["Core"], note: "Bassin rétroversé, abdos et fessiers contractés à fond.", docteurFitnessUrl: "https://www.docteur-fitness.com/ciseaux" },
             { name: "Planche", sets: "1 min", tags: ["Core"], note: "Anti-rotation stricte pour renforcer les obliques.", docteurFitnessUrl: "https://www.docteur-fitness.com/planche" }
           ]
