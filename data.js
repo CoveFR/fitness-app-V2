@@ -280,10 +280,10 @@ const APP_DATA = {
             { name: "Relevé de Jambes Assis", sets: " 20 reps", tags: ["Abdominaux"], note: "Éviter l'élan, amener les genoux haut vers la poitrine.", docteurFitnessUrl: "https://www.docteur-fitness.com/releve-de-jambes-assis" },
             { name: "Ciseaux", sets: "20 reps", tags: ["Core"], note: "Bassin rétroversé, abdos et fessiers contractés à fond.", docteurFitnessUrl: "https://www.docteur-fitness.com/ciseaux" },
             { name: "Planche", sets: "1 min", tags: ["Core"], note: "Anti-rotation stricte pour renforcer les obliques.", docteurFitnessUrl: "https://www.docteur-fitness.com/planche" }
-      ]
-    }
-  ]
-};
+         ]
+       }
+     ]
+   };
 
 // ==========================================================================
 // VARIABLES DE LIAISON DYNAMIQUES (pour compatibilité avec le script interface)
