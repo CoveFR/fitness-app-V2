@@ -224,7 +224,8 @@ const APP_DATA = {
           variantKey: "epaules",
           items: [
             { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-epaules-avec-halteres" },
-            { name: "Élévations Latérales aux Haltères", sets: "4 séries · 12-15 reps", tags: ["Épaules"], note: "Controler la charge , emmener les coudes vers le haut jusqu'au niveau des épaules, rester stable.", docteurFitnessUrl: "https://www.docteur-fitness.com/elevations-laterales" }
+            { name: "Élévations Latérales aux Haltères", sets: "4 séries · 12-15 reps", tags: ["Épaules"], note: "Controler la charge , emmener les coudes vers le haut jusqu'au niveau des épaules, rester stable.", docteurFitnessUrl: "https://www.docteur-fitness.com/elevations-laterales" },
+            { name: "Rotation Externe à la Poulie", sets: "4 séries · 10-12 reps", tags: ["Épaules"], note: "Controler la charge , Coude fixe le long du corp.", docteurFitnessUrl: "https://www.docteur-fitness.com/rotation-externe-de-lepaule-a-la-poulie" }
           ]
         },
         {
