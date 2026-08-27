@@ -214,27 +214,26 @@ const APP_DATA = {
         {
           label: "Développement Pectoral",
           items: [
-            { name: "Développé Couché Incliné (Haltères ou Barre)", sets: "4 séries · 6-8 reps", tags: ["Pectoraux"], note: "Cible le faisceau claviculaire (haut des pecs).", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-incline-a-la-barre" },
-            { name: "Développé Couché Décliné (ou Dips)", sets: "3 séries · 8-10 reps", tags: ["Pectoraux"], note: "Excellente contraction sur le bas des pecs.", docteurFitnessUrl: "https://www.docteur-fitness.com/dips" },
-            { name: "Écartés Poulie Vis-à-Vis", sets: "3 séries · 12-15 reps", tags: ["Pectoraux"], note: "Garder une légère flexion des coudes constante.", docteurFitnessUrl: "https://www.docteur-fitness.com/ecartes-poulie-vis-a-vis" }
+             { name: "Pec-Fly", sets: "3 séries · 10-12 reps", tags: ["Pectoraux"], note: "Régler hauteur du siège pour que le bras sois droit, rentrer les omoplates et sortir le buste.", docteurFitnessUrl: "https://www.docteur-fitness.com/pec-deck-ou-butterfly" },
+             { name: "Développé Couché Incliné (Smith Machine)", sets: "3 séries · 8-12 reps", tags: ["Pectoraux"], note: "Prise un peu plus large que épaules, rentrer les omoplates.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-incline-a-la-barre" },
+             { name: "Développé Couché Haltère", sets: "3 séries · 6-8 reps", tags: ["Pectoraux"], note: "Rentrer les omoplates, bien garder les avant bras perpandiculaire au sol.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-couche-halteres" }
           ]
         },
         {
           label: "Épaules & Triceps (Option 1 : Focus Épaules)",
           variantKey: "epaules",
           items: [
-            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-militaire" },
-            { name: "Élévations Latérales aux Haltères", sets: "4 séries · 12-15 reps", tags: ["Épaules"], note: "Mouvement fluide, emmener les coudes vers le haut.", docteurFitnessUrl: "https://www.docteur-fitness.com/elevations-laterales-halteres" },
-            { name: "Extension Triceps à la Poulie Haute", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Coudes serrés le long du corps.", docteurFitnessUrl: "https://www.docteur-fitness.com/extensions-triceps-poulie" }
+            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-epaules-avec-halteres" },
+            { name: "Élévations Latérales aux Haltères", sets: "4 séries · 12-15 reps", tags: ["Épaules"], note: "Controler la charge , emmener les coudes vers le haut jusqu'au niveau des épaules, rester stable.", docteurFitnessUrl: "https://www.docteur-fitness.com/elevations-laterales" }
           ]
         },
         {
           label: "Épaules & Triceps (Option 2 : Focus Triceps)",
           variantKey: "triceps",
           items: [
-            { name: "Développé Militaire aux Haltères", sets: "3 séries · 8-10 reps", tags: ["Épaules"], note: "Gardes les abdos fermés, pas de cambrure excessive.", docteurFitnessUrl: "https://www.docteur-fitness.com/developpe-militaire" },
-            { name: "Extension Triceps Nuque (Haltère ou Poulie)", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Étirement complet de la longue portion.", docteurFitnessUrl: "https://www.docteur-fitness.com/extension-triceps-nuque" },
-            { name: "Dips sur Banc (ou Machine)", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Garder le buste droit pour cibler en priorité les triceps.", docteurFitnessUrl: "https://www.docteur-fitness.com/dips" }
+            { name: "Extensions Triceps (Barre en V)", sets: "3 séries · 8-10 reps", tags: ["Triceps"], note: "Poulie en haut, Omoplates en arrière et vers le bas, coude vers les côtes et immobiles, bien pensé à pousser vers le bas.", docteurFitnessUrl: "https://www.docteur-fitness.com/extensions-verticales-a-la-poulie-haute" },
+            { name: "Extension Triceps Haltère Assis", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Commencer avec healtère au dessus de la tête avec coude tendu puis controler la descente en finissant avec l'haltère derrière le cou.", docteurFitnessUrl: "https://www.docteur-fitness.com/extensions-des-triceps-assis-avec-haltere" },
+            { name: "Extension à la Corde", sets: "3 séries · 10-12 reps", tags: ["Triceps"], note: "Etendre les bras jusqu'à ce qu'il sois tendus.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/triceps/extension-des-triceps-a-la-corde" }
           ]
         }
       ]
