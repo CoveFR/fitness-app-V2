@@ -251,7 +251,7 @@ const APP_DATA = {
             { name: "Hip Thrust à la Barre", sets: "4 séries · 10-12 reps", tags: ["Fessiers"], note: "Bien contracter les fessiers, pause de 1 seconde en haut.", docteurFitnessUrl: "https://www.docteur-fitness.com/hip-thrust" },
             { name: "Fentes Bulgarie (Haltères)", sets: "3 séries · 10 reps / jambe", tags: ["Fessiers"], note: "Inclinaison du buste légèrement vers l'avant pour cibler les fessiers, éloigner le poid vers l'avant.", docteurFitnessUrl: "https://www.docteur-fitness.com/fentes-bulgares" },
             { name: "Step Up Poulie", sets: "3 séries · 12 reps", tags: ["Fessiers"], note: "Banc en face de la poulie, poulie régler au plus bas, pousser la jambe en arrière à la descente.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/fessiers/fente-arriere-avec-halteres-sur-marche" },
-            { name: "RDL", sets: "4 séries · 10-12 reps", tags: ["Fessiers"], note: "Pied largeur de hanche, pousser le hanches le plus possible vers l'arrière et remonter juste après, ne pas cambrer le dos.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/fessiers/souleve-de-terre-roumain" }
+            { name: "RDL", sets: "4 séries · 10-12 reps", tags: ["Ischios"];["Fessiers"], note: "Pied largeur de hanche, pousser le hanches le plus possible vers l'arrière et remonter juste après, ne pas cambrer le dos.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/fessiers/souleve-de-terre-roumain" }
           ]
         },
         {
