@@ -167,7 +167,7 @@ const APP_DATA = {
       note: "Attention à bien initier le tirage avec les coudes et non avec les mains pour maximiser le recrutement du grand dorsal.",
       groups: [
          {
-          label: "Echauffement",
+          label: "Échauffement",
           items: [
             { name: "Traction", sets: "4 séries · 6-8 reps", tags: ["Dos"], note: "Prise large, poitrine sortie vers la barre.", docteurFitnessUrl: "https://www.docteur-fitness.com/traction" },
           ]
@@ -184,7 +184,7 @@ const APP_DATA = {
         {
           label: "Isolation Biceps",
           items: [
-            { name: "Curl à la Barre", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-a-la-barre" },
+            { name: "Curl à la Barre", sets: "3 séries · 12-15 reps", tags: ["Biceps"], note: "Bras bien en arrière pour un étirement maximal.", docteurFitnessUrl: "https://www.docteur-fitness.com/curl-a-la-barre" },
             { name: "Curl Marteau Assis", sets: "3 séries · 10-12 reps", tags: ["Biceps"], note: "Évite tout balancement du corps.", docteurFitnessUrl: "https://smartworkout.app/fr/bibliotheque-d-exercices/biceps/curl-marteau-assis" }
           ]
         },
@@ -270,12 +270,16 @@ const APP_DATA = {
         {
           label: "Renforcement Profond & Grand Droits",
           items: [
-            { name: "Crunch à la Poulie Haute", sets: "3 séries · 12-15 reps", tags: ["Abdominaux"], note: "Enrouler la colonne vertébrale, ne pas tirer avec les bras.", docteurFitnessUrl: "https://www.docteur-fitness.com/crunch-poulie-haute" },
-            { name: "Relevé de Jambes Suspendu à la Barre", sets: "3 séries · 10-12 reps", tags: ["Abdominaux"], note: "Éviter l'élan, amener les genoux haut vers la poitrine.", docteurFitnessUrl: "https://www.docteur-fitness.com/releves-de-jambes-suspendu" },
-            { name: "Gainage Planche Frontale", sets: "3 séries · 45s à 1 min", tags: ["Core"], note: "Bassin rétroversé, abdos et fessiers contractés à fond.", docteurFitnessUrl: "https://www.docteur-fitness.com/planche-gainage" },
-            { name: "Pallof Press à la Poulie", sets: "3 séries · 12 reps / côté", tags: ["Core"], note: "Anti-rotation stricte pour renforcer les obliques.", docteurFitnessUrl: "https://www.docteur-fitness.com/pallof-press" }
+            { name: "Crunch à la Poulie Haute", sets: "3 séries · 12-15 reps", tags: ["Abdominaux"], note: "Enrouler la colonne vertébrale, ne pas tirer avec les bras.", docteurFitnessUrl: "https://www.docteur-fitness.com/crunch-a-la-poulie" },
+            { name: "Flexion latérale poid libre", sets: "3 séries · 10-12 reps", tags: ["Abdominaux"], note: "Éviter l'élan, amener les genoux haut vers la poitrine.", docteurFitnessUrl: "https://www.docteur-fitness.com/flexions-laterales-avec-haltere" }
           ]
-        }
+        },
+        {
+          label: "Circuit x3",
+          items: [
+            { name: "Relevé de Jambes Assis", sets: " 20 reps", tags: ["Abdominaux"], note: "Éviter l'élan, amener les genoux haut vers la poitrine.", docteurFitnessUrl: "https://www.docteur-fitness.com/releve-de-jambes-assis" },
+            { name: "Ciseaux", sets: "20 reps", tags: ["Core"], note: "Bassin rétroversé, abdos et fessiers contractés à fond.", docteurFitnessUrl: "https://www.docteur-fitness.com/ciseaux" },
+            { name: "Planche", sets: "1 min", tags: ["Core"], note: "Anti-rotation stricte pour renforcer les obliques.", docteurFitnessUrl: "https://www.docteur-fitness.com/planche" }
       ]
     }
   ]
